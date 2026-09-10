@@ -79,6 +79,17 @@ class Appareil:
     def quantite(self, nom: str):
         return self.ingredients[nom].quantite
 
+class Recipient:
+    """Récipient contenant l'ingrédient ou l'appareil qui est travaillé."""
+
+    def __init__(self, nom: str, contenu):
+        self.nom = nom
+        self.contenu = contenu
+
+    def __str__(self):
+        return self.nom
+
+
 if __name__ == "__main__":
     batteur = BatteurOeufs("alfred", 6)
     fondeur = FondeurChocolat("victor",200)
