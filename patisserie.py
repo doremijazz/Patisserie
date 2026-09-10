@@ -34,9 +34,9 @@ class Chocolat(Ingredient):
         super().__init__("chocolat", quantite, "g")
 
 
-class BatteurOeufs(threading.Thread):
-    def __init__(self, nb_oeufs):
-        threading.Thread.__init__(self)
+class BatteurOeufs(Commis):
+    def __init__(self, nom, nb_oeufs):
+        super().__init__(nom)
         self.nb_oeufs = nb_oeufs
 
     def run(self):
@@ -47,9 +47,9 @@ class BatteurOeufs(threading.Thread):
             time.sleep(0.5)  # temps supposé d'un tour de batteur
 
 
-class FondeurChocolat(threading.Thread):
-    def __init__(self, quantite):
-        threading.Thread.__init__(self)
+class FondeurChocolat(Commis):
+    def __init__(self, nom, quantite):
+        super().__init__(nom)
         self.quantite = quantite  # en grammes
 
     def run(self):
@@ -68,8 +68,8 @@ class FondeurChocolat(threading.Thread):
 
 
 if __name__ == "__main__":
-    batteur = BatteurOeufs(6)
-    fondeur = FondeurChocolat(200)
+    batteur = BatteurOeufs("alfred", 6)
+    fondeur = FondeurChocolat("victor",200)
     batteur.start()
     fondeur.start()
     batteur.join()
