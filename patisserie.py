@@ -66,6 +66,18 @@ class FondeurChocolat(Commis):
             print(f"Je mélange {self.quantite} de chocolat à fondre, tour n°{no_tour}")
             time.sleep(1)  # temps supposé d'un tour de spatule
 
+class Appareil:
+    """Mélange homogène d'ingrédients servant de base à une préparation."""
+
+    def __init__(self, nom: str):
+        self.nom = nom
+        self.ingredients = {}
+
+    def add_ingredient(self, nom: str, quantite: float, unite: str):
+        self.ingredients[nom] = Ingredient(nom, quantite, unite)
+
+    def quantite(self, nom: str):
+        return self.ingredients[nom].quantite
 
 if __name__ == "__main__":
     batteur = BatteurOeufs("alfred", 6)
