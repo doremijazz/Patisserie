@@ -3,6 +3,14 @@ import time
 import math
 from abc import ABC, abstractmethod
 
+class Commis(threading.Thread, ABC):
+    def __init__(self, nom):
+        super().__init__(name=nom)
+        self.nom = nom
+
+    @abstractmethod
+    def run(self):
+        pass
 
 class Ingredient(ABC):
     """Classe abstraite représentant un ingrédient mesurable."""
